@@ -3,6 +3,8 @@ html, body {
   height: 100%;
   background-image: url(https://images.pexels.com/photos/1253737/pexels-photo-1253737.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
   background-size: cover;
+  font-family: 'Coming Soon', cursive;
+  /* font-family: 'Gloria Hallelujah', cursive; */
 }
 .header {
   background-color: rgba(255, 255, 255, 0);
@@ -101,8 +103,9 @@ h3, h2 {
   color: white;
   padding: 0.50rem;
   margin: .25rem;
+  cursor: pointer;
 }
-input {
+input, label {
   cursor: pointer;
 }
 .button {
