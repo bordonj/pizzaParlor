@@ -12,6 +12,7 @@ html, body {
   border-radius: 10px;
   padding: 10px 0;
   flex: 0 1 auto;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 .contains {
   height: 100%;
@@ -31,15 +32,25 @@ html, body {
   flex: 1 1 auto;
 }
 .left {
-  margin: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-right: -20px;
+  background-color: rgb(255, 209, 187);
+  border-radius: 5px;
+  padding: 5px 5%;
 }
 .right {
   background-color: white;
   height: 100%;
-  border-radius: 10px;
-  margin: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 5px;
 }
 
 /* text-style */
 
 /* media */
+.header img {
+  height: 100px;
+}
