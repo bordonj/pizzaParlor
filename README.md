@@ -36,7 +36,7 @@ git clone https://github.com/bordonj/pizzaParlor.git
 Test | Code|  Output |
 | -- | -- | -- |
 | It will create an object for the PizzaOrder| NaN | returns 'invalid' -->
-
+```
 Describe: Pizzas()
 Test: "It should return an object that contains a key for pizzaOrder and a key for currentId set to 0"
 Code: let pizzas1 = new Pizzas();
@@ -61,7 +61,7 @@ Expected Output: newPizza = {
   size: 'large',
   toppings: ['cheese'],
 }
-
+```
 ## Github Pages link
 
 [Click here](https://bordonj.github.io/pizzaParlor) for the Github Pages link. 
