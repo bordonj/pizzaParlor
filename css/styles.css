@@ -2,31 +2,29 @@
 html, body {
   height: 100%;
   background-image: url(https://images.pexels.com/photos/1253737/pexels-photo-1253737.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
-  background-color: rgb(0,100,145);
+  background-size: cover;
 }
 .header {
-  background-color: rgb(255, 255, 255);
-  color: rgb(255,103,27);
+  background-color: rgba(255, 255, 255, 0);
   text-align: center;
   margin-top:10px;
-  border-radius: 10px;
   padding: 10px 0;
   flex: 0 1 auto;
   font-family: 'Gloria Hallelujah', cursive;
 }
 .contains {
   height: 100%;
-  width: 80%;
+  width: 90%;
   margin: auto;
-  background-color: white;
   margin-top: 0;
   display: flex;
   flex-flow: column;
+  padding-bottom: 3rem;
 
 }
 .main {
   /* height: 90%; */
-  background-color: rgb(255,103,27);
+  /* background-color: rgb(255,103,27); */
   border-radius: 10px;
   margin: 0 5px;
   flex: 1 1 auto;
@@ -35,22 +33,50 @@ html, body {
   margin-left: 5px;
   margin-top: 5px;
   margin-right: -20px;
-  background-color: rgb(255, 209, 187);
+  background-color: rgb(255, 255, 255);
   border-radius: 5px;
   padding: 5px 5%;
+  box-shadow: 3px 3px 10px black;
+  /* height: 100%; */
 }
 .right {
-  background-color: white;
-  height: 100%;
+  background-color: rgb(255, 209, 187);
+  /* height: 100%; */
   border-radius: 5px;
   margin-right: 5px;
   margin-top: 5px;
   padding: 5px;
+  margin-bottom: -100px;
+  box-shadow: 3px 3px 10px black;
 }
+/* .intro { */
+  /* background-color: rgb(255, 236, 187); */
+/* } */
 
 /* text-style */
-
+.h3 {
+  font-size: 1.75rem;
+}
 /* media */
 .header img {
   height: 100px;
+}
+
+.header h1 {
+  background-color: rgb(255,103,27);
+  color: white;
+  width: 100%;
+  margin: auto;
+  border-radius: 100px;
+  padding: 2%;
+  box-shadow: 3px 3px 10px black;
+}
+
+#selectSize {
+  /* background-color: black; */
+  width: 50%;
+  background-color: rgba(255, 103, 27, 0.672);
+  color: white;
+  padding: 0.50rem;
+  margin: .25rem;
 }
