@@ -60,31 +60,31 @@ $(document).ready(function() {
     if(!selectedSize) {
       alert('please select size');
     } else {
-      console.log(selectedSize);
+      $('input').each(function() {
+        if ($(this).is(':checked')) {
+          toppings.push($(this).val());
+        }
+      })
+      newPizza = new PizzaOrder(selectedSize, toppings);
+  
+      
+      console.log('toppings', toppings);
+      console.log('newPizza', newPizza);
+      newPizza.addPrice();
+      console.log('newPizza price', newPizza.price)
+      console.log('newPizza toppings', newPizza.toppings)
+      console.log('newPizza size', newPizza.size)
+      $('.price').html(`$${newPizza.price.toFixed(2)}`);
+      toppings = newPizza.toppings;
+      let toppingsStr = toppings.join('<br>');
+      console.log('toppingsStr', toppingsStr);
+      let htmlstr = `
+      <p><b>Size</b>: ${newPizza.size}</p>
+      <p><b>Toppings</b>: <br>${toppingsStr}</p></p>`
+      $('.orderPreview').html(htmlstr);
+      $('.orderPreview').show();
     }
-    $('input').each(function() {
-      if ($(this).is(':checked')) {
-        toppings.push($(this).val());
-      }
-    })
-    newPizza = new PizzaOrder(selectedSize, toppings);
 
-    
-    console.log('toppings', toppings);
-    console.log('newPizza', newPizza);
-    newPizza.addPrice();
-    console.log('newPizza price', newPizza.price)
-    console.log('newPizza toppings', newPizza.toppings)
-    console.log('newPizza size', newPizza.size)
-    $('.price').html(`$${newPizza.price.toFixed(2)}`);
-    toppings = newPizza.toppings;
-    let toppingsStr = toppings.join('<br>');
-    console.log('toppingsStr', toppingsStr);
-    let htmlstr = `
-    <p><b>Size</b>: ${newPizza.size}</p>
-    <p><b>Toppings</b>: <br>${toppingsStr}</p></p>`
-    $('.orderPreview').html(htmlstr);
-    $('.orderPreview').show();
   })
   // may delete this logic below if unable to correctly add pizzas 
   $('#addPizza').click(function(e) {
