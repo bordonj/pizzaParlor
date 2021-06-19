@@ -30,16 +30,16 @@ PizzaOrder.prototype.addPrice = function() {
   } else {
     this.price = 4;
   }
-  if (this.toppings.length > 2) {
+  if (this.toppings.length >= 1) {
     for (let topping of this.toppings) {
-      this.price += 2;
+      this.price += 1.50;
       // console.log('loop', topping);
     }
     // this.price += 6;
-  } else if (this.toppings.length === 2) {
-    this.price += 4;
-  } else if (this.toppings.length === 1) {
-    this.price += 2;
+  // } else if (this.toppings.length === 2) {
+  //   this.price += 4;
+  // } else if (this.toppings.length === 1) {
+  //   this.price += 2;
   } else {
     this.price;
   }
@@ -68,7 +68,7 @@ $(document).ready(function() {
     console.log('newPizza price', newPizza.price)
     console.log('newPizza toppings', newPizza.toppings)
     console.log('newPizza size', newPizza.size)
-    $('.price').html(newPizza.price)
+    $('.price').html(`$${newPizza.price.toFixed(2)}`)
   })
 
 })

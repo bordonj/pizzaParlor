@@ -60,10 +60,7 @@ html, body {
   width: 100%;
   margin: auto;
 }
-.price {
-  background-color: white;
-  padding: 3%;
-}
+
 
 
 /* text-style */
@@ -79,6 +76,13 @@ h3, h2 {
   font-family: 'Gloria Hallelujah', cursive;
 }
 
+.price {
+  background-color: white;
+  padding: 3%;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 3rem;
+}
 
 /* media */
 .header img {
