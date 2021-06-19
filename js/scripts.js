@@ -94,4 +94,15 @@ $(document).ready(function() {
     console.log('pizzasArr', pizzasArr)
     console.log('pizzas object', pizzas);
   })
+  $('#pizza').submit(function(e) {
+    e.preventDefault();
+    const selectedSize = $('#selectSize').val();
+    if(!selectedSize) {
+      alert('please select size');
+    } else {
+      $('.left, .right, .rightLow').hide();
+      $('.submitted').show();
+    }
+
+  })
 })
