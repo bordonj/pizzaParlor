@@ -22,7 +22,6 @@
           <div class='col-md-9'>
             <div class='left intro'>
               <h2>Create your pizza</h2>
-              <p>Welcome to "Your Favorite Pizza".</p>
               <p>We offer a variety of different toppings to suit your unique tastes! Please start by choosing a size of your preferred pizza. Afterwards, you can add as many toppings as you like for about $2 per topping.</p>
             </div>
             <div class='left size'>
@@ -113,10 +112,11 @@
 
               </div>
               <div class='button'>
-                <button type='submit' class='btn btn-success'>Submit Order</button>
-                <button class='btn btn-warning' id='preview'>Preview Price</button>
+                <button type='submit' class='btn btn-success' id='submit'>Submit Order</button>
+                <button class='btn btn-warning' id='addOrder'>Add to Order</button>
+                <span class='addPizza'>                <button class='btn btn-danger' id='addPizza'>Add Another Pizza</button></span>
+
               </div>
-              
             </form>
             </div>
               
@@ -127,6 +127,10 @@
               <h3>Welcome!</h3>
               <p>We are 'Your Favorite Pizza!' Hope you can enjoy the various delectable pizzas we have to offer. Every ingredient is treated with care as it is created with every customer in mind!</p>
               <div class='price'>$$</div>
+            </div>
+            <div class='rightLow'>
+              <h3>Order Preview</h3>
+              <div class='orderPreview'></div>
             </div>
           </div>
         </div>

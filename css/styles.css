@@ -4,6 +4,7 @@ html, body {
   background-image: url(https://images.pexels.com/photos/1253737/pexels-photo-1253737.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
   background-size: cover;
   font-family: 'Coming Soon', cursive;
+  background-attachment: fixed;
   /* font-family: 'Gloria Hallelujah', cursive; */
 }
 .header {
@@ -50,8 +51,16 @@ html, body {
   /* margin-right: 5%; */
   margin-top: 5px;
   padding: 30px;
-  margin-bottom: -100px;
+  /* margin-bottom: -100px; */
   /* box-shadow: 3px 3px 10px black; */
+}
+.rightLow {
+  background-color: rgb(165, 51, 31);
+  margin-top: 3%;
+  margin-bottom: 5%;
+  padding: 30px;
+  border-radius: 5px;
+  color: white;
 }
 /* .intro { */
   /* background-color: rgb(255, 236, 187); */
@@ -59,6 +68,12 @@ html, body {
 .toppingsRow {
   width: 100%;
   margin: auto;
+}
+.orderPreview{
+  color: black;
+  background-color: white;
+  padding: 5%;
+  display: none;
 }
 
 
@@ -113,5 +128,12 @@ input, label {
   cursor: pointer;
 }
 .button {
-  text-align: center;
+  text-align: right;
+}
+.addPizza {
+  float: right;
+  margin: 0 10px;
+}
+#submit {
+  float: left;
 }
