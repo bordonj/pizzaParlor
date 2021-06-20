@@ -11,7 +11,11 @@ Pizzas.prototype.addPizzaOrder = function(pizzaOrder) {
   this.pizzaOrder[pizzaOrder.id] = pizzaOrder;
 };
 
+// fixed the deleting all orders breakikng code with line 16-17
 Pizzas.prototype.assignId = function() {
+  if (this.pizzaOrder[1] === undefined) {
+    this.currentId = 0;
+  }
   this.currentId++;
   return this.currentId;
 }
@@ -121,7 +125,9 @@ $(document).ready(function() {
         let pizzasArr = Object.keys(pizzas);
         console.log('pizzasArr', pizzasArr)
         console.log('pizzas object', pizzas);
+            // below only works for adding 2 pizzas, but more than 3 it breaks
         for (let i = 1; i <= pizzas.currentId; i++) {
+          pizzas.totalPrice += pizzas.pizzaOrder[i].price;
           console.log('pizzaOrder price', pizzas.pizzaOrder[i].price)
           let displaySize = pizzas.pizzaOrder[i].size;
           let displayToppings = pizzas.pizzaOrder[i].toppings;
@@ -139,6 +145,8 @@ $(document).ready(function() {
           </div>`
           $('.orderPreview').append(htmlstr);
           $('.orderPreview').show();
+          $('.price').html(`$${pizzas.totalPrice.toFixed(2)}`);
+          console.log('totalPrice', pizzas.totalPrice);
           
         }
 
@@ -146,13 +154,8 @@ $(document).ready(function() {
       
 
     }
-    // below only works for adding 2 pizzas, but more than 3 it breaks
-    for (let i = 1; i <= pizzas.currentId; i++) {
-      pizzas.totalPrice += pizzas.pizzaOrder[i].price;
-    }
-    console.log('pizzasTotalPrice', pizzas);
-    $('.price').html(`$${pizzas.totalPrice.toFixed(2)}`);
-    console.log('totalPrice', pizzas.totalPrice);
+
+
 
   })
   // may delete this logic below if unable to correctly add pizzas 
