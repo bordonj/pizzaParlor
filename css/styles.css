@@ -134,6 +134,18 @@ h3, h2 {
   font-size: 3rem;
 }
 
+.totPrice {
+  color: white;
+  font-weight: bolder;
+}
+.displayedTotal {
+  text-align: right;
+  width: 50%;
+  margin-right: 0;
+  margin-left: auto;
+  background-color: tomato;
+}
+
 /* media */
 .header img {
   height: 100px;
@@ -179,4 +191,7 @@ input, label {
   float: right;
   width: 40%;
   min-width: 70px;
+}
+.newOrder {
+  text-align: right;
 }

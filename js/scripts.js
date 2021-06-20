@@ -149,15 +149,22 @@ $(document).ready(function() {
     let htmlstr = `
     <p><h2>- Pizza (1) -</h2></p>
     <div class='orderDetails'>
-      <p class='sizeP'><b>Size</b>: <span class='floatRight'>${displaySize}</span></p>
-      <p class='toppingsP'><b>Toppings</b>: <span class='floatRight'>cheese<br>${toppingsStr}</span></p>
+      <div class='row'>
+        <div class='col-6'>
+          <p>Size</p>
+          <p>Toppings</p>
+        </div>
+        <div class='col-6'>
+          <p>${displaySize}</p>
+          <p>cheese<br>${toppingsStr}</p>
+        </div>
+      </div>
+
     </div>`;
     $('.finalPrice').html(`$${pizzas.totalPrice.toFixed(2)}`);
     $('.receipt').append(htmlstr);
     $('.orderNumber').text(Math.floor(Math.random() * 10000));
   }
   $('.submitted').show();
-    
-
   })
 })
