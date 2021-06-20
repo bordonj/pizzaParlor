@@ -145,6 +145,9 @@ h3, h2 {
   margin-left: auto;
   background-color: tomato;
 }
+.sizePrice b {
+  color: tomato;
+}
 
 /* media */
 .header img {
