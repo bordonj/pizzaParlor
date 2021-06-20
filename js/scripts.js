@@ -154,11 +154,11 @@ $(document).ready(function() {
       <p><h2>- Pizza (1) -</h2></p>
       <div class='orderDetails'>
         <div class='row'>
-          <div class='col-6'>
+          <div class='col-md-6'>
             <p>Size</p>
             <p>Toppings</p>
           </div>
-          <div class='col-6'>
+          <div class='col-md-6'>
             <p>${displaySize}</p>
             <p>cheese<br>${toppingsStr}</p>
           </div>
