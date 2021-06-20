@@ -12,11 +12,19 @@ Pizzas.prototype.addPizzaOrder = function(pizzaOrder) {
 };
 
 // fixed the deleting all orders breakikng code with line 16-
-//try nesting if pizzaOrder[2] doesn't exist
+// the above doesn't work if you only delete order
 Pizzas.prototype.assignId = function() {
-  if (this.pizzaOrder[1] === undefined) {
+  // if (this.pizzaOrder.hasOwnProperty(Number)) {
+  //   this.currentId = 0;
+  // }
+  let pizzaOrderEntries = Object.entries(this.pizzaOrder);
+  if (pizzaOrderEntries === undefined) {
     this.currentId = 0;
   }
+
+  // if (this.pizzaOrder[1] === undefined) {
+  //   this.currentId = 0;
+  // }
   this.currentId++;
   return this.currentId;
 }
@@ -26,6 +34,18 @@ Pizzas.prototype.deleteOrder = function (id) {
     return false;
   }
   delete this.pizzaOrder[id];
+  for (let i = this.currentId; i >= 1; i--) {
+    if (i > id) {
+      pizzas.currentId = i;
+      break;
+    } else {
+      pizzas.currentId = id-1;
+    }
+  }
+  // if (this.pizzaOrder.hasOwnProperty(id)) {
+  //   console.log('hasOwnProperty', 'true');
+  // }
+  
   return true;
 };
 
@@ -128,6 +148,10 @@ $(document).ready(function() {
         console.log('pizzas object', pizzas);
             // below only works for adding 2 pizzas, but more than 3 it breaks
         for (let i = 1; i <= pizzas.currentId; i++) {
+          // added line below for if delete order in middle
+          if (pizzas.pizzaOrder[i] === undefined) {
+            continue;
+          }
           console.log('pizzaOrder price', pizzas.pizzaOrder[i].price)
           let displaySize = pizzas.pizzaOrder[i].size;
           let displayToppings = pizzas.pizzaOrder[i].toppings;
@@ -145,12 +169,14 @@ $(document).ready(function() {
           </div>`
           $('.orderPreview').append(htmlstr);
           $('.orderPreview').show();;
-          
         }
         //reset price to 0 so doesn't keep looping when you add more pizzas
         pizzas.totalPrice = 0;
       }
       for (let i = pizzas.currentId; i >= 1; i--) {
+        if (pizzas.pizzaOrder[i] === undefined) {
+          continue;
+        }
         pizzas.totalPrice += pizzas.pizzaOrder[i].price;
       }
       $('.price').html(`$${pizzas.totalPrice.toFixed(2)}`);
