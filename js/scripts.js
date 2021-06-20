@@ -16,6 +16,14 @@ Pizzas.prototype.assignId = function() {
   return this.currentId;
 }
 
+Pizzas.prototype.deleteOrder = function (id) {
+  if (this.pizzaOrder[id] === undefined) {
+    return false;
+  }
+  delete this.pizzaOrder[id];
+  return true;
+};
+
 // business logic of PizzaOrder
 function PizzaOrder(size, toppings) {
   this.size = size;
@@ -49,10 +57,24 @@ PizzaOrder.prototype.addPrice = function() {
   }
 }
 
+
 // UI logic
 let pizzas = new Pizzas();
 let newPizza;
+
+// if you delete all orders, it breaks the object
+function attachDeleteListeners() {
+  $(".orderPreview").on("click", ".delete", function() { 
+    $(this).remove();
+    $(`.${this.id}`).remove();
+    pizzas.totalPrice -= pizzas.pizzaOrder[this.id].price;
+    pizzas.deleteOrder(parseInt(this.id));
+    $('.price').html(`$${pizzas.totalPrice.toFixed(2)}`);
+  });
+}
+
 $(document).ready(function() {
+  attachDeleteListeners()
   $('#addOrder').on('click', function(e) {
     // it seems like I need to add the prevenDefault or it refreshes even though this isn't a submit
     e.preventDefault();
@@ -67,6 +89,7 @@ $(document).ready(function() {
         }
       })
       newPizza = new PizzaOrder(selectedSize, toppings);
+      
       pizzas.addPizzaOrder(newPizza);
       newPizza.addPrice();
       if (pizzas.currentId === 1) {
@@ -82,8 +105,8 @@ $(document).ready(function() {
         console.log('toppingsStr', toppingsStr);
         let htmlstr = `
         <p><b>Size</b>: ${newPizza.size}</p>
-        <p><b>Toppings</b>: <br>${toppingsStr}</p>
-        <p><b>Price</b>: <br>${newPizza.price}</p>`
+        <p><b>Toppings</b>: cheese<br>${toppingsStr}</p>
+        <p><b>Price</b>: ${newPizza.price}</p>`
         $('.orderPreview').html(htmlstr);
         $('.orderPreview').show();
       } else {
@@ -99,7 +122,6 @@ $(document).ready(function() {
         console.log('pizzasArr', pizzasArr)
         console.log('pizzas object', pizzas);
         for (let i = 1; i <= pizzas.currentId; i++) {
-          pizzas.totalPrice += pizzas.pizzaOrder[i].price;
           console.log('pizzaOrder price', pizzas.pizzaOrder[i].price)
           let displaySize = pizzas.pizzaOrder[i].size;
           let displayToppings = pizzas.pizzaOrder[i].toppings;
@@ -109,20 +131,28 @@ $(document).ready(function() {
           // toppings = newPizza.toppings;
           let toppingsStr = displayToppings.join('<br>');
           // console.log('toppingsStr', toppingsStr);
-          let htmlstr = `
+          let htmlstr = `<div class='${i}'>
+          <p>Order ${i} <button class='delete' id='${i}'>delete</button></p>
           <p><b>Size</b>: ${displaySize}</p>
-          <p><b>Toppings</b>: <br>${toppingsStr}</p>
-          <p><b>Price:</b> <br>${displayPrice}</p>`
+          <p><b>Toppings</b>: cheese<br>${toppingsStr}</p>
+          <p><b>Price:</b> ${displayPrice}</p><br>
+          </div>`
           $('.orderPreview').append(htmlstr);
           $('.orderPreview').show();
-          $('.price').html(`$${pizzas.totalPrice.toFixed(2)}`);
+          
         }
-        console.log('totalPrice', pizzas.totalPrice);
+
       }
       
 
     }
-    
+    // below only works for adding 2 pizzas, but more than 3 it breaks
+    for (let i = 1; i <= pizzas.currentId; i++) {
+      pizzas.totalPrice += pizzas.pizzaOrder[i].price;
+    }
+    console.log('pizzasTotalPrice', pizzas);
+    $('.price').html(`$${pizzas.totalPrice.toFixed(2)}`);
+    console.log('totalPrice', pizzas.totalPrice);
 
   })
   // may delete this logic below if unable to correctly add pizzas 
