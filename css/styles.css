@@ -5,19 +5,15 @@ html, body {
   background-size: cover;
   font-family: 'Coming Soon', cursive;
   background-attachment: fixed;
-  /* font-family: 'Gloria Hallelujah', cursive; */
 }
 .header {
   background-color: rgba(255, 255, 255, 0);
   text-align: center;
-  /* margin-top:10px; */
-  /* padding: 10px 0; */
   flex: 0 1 auto;
   font-family: 'Gloria Hallelujah', cursive;
 }
 .contains {
   height: 100%;
-  /* width: 90%; */
   margin: auto;
   margin-top: 0;
   display: flex;
@@ -26,33 +22,23 @@ html, body {
 
 }
 .main {
-  /* height: 90%; */
-  /* background-color: rgb(255,103,27); */
   width: 90%;
   border-radius: 10px;
   margin: auto;
   flex: 1 1 auto;
 }
 .left, .submitted {
-  /* margin-left: 5%; */
   margin-top: 5px;
   margin-bottom: 2%;
-  /* margin-right: -20px; */
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
   padding: 30px 10%;
-  /* box-shadow: 3px 3px 10px black; */
-  /* height: 100%; */
 }
 .right {
   background-color: rgb(255, 209, 187);
-  /* height: 100%; */
   border-radius: 5px;
-  /* margin-right: 5%; */
   margin-top: 5px;
   padding: 30px;
-  /* margin-bottom: -100px; */
-  /* box-shadow: 3px 3px 10px black; */
 }
 .rightLow {
   background-color: rgb(165, 51, 31);
@@ -62,9 +48,6 @@ html, body {
   border-radius: 5px;
   color: white;
 }
-/* .intro { */
-  /* background-color: rgb(255, 236, 187); */
-/* } */
 .toppingsRow {
   width: 100%;
   margin: auto;
@@ -82,13 +65,18 @@ html, body {
   width: 50%;
   margin-left: auto;
   margin-right: 0;
-  /* float: right; */
-  /* margin: auto; */
 }
 .orderDetails {
   width: 75%;
   margin-right: 0;
   margin-left: auto;
+}
+.displayedTotal {
+  text-align: right;
+  width: 50%;
+  margin-right: 0;
+  margin-left: auto;
+  background-color: tomato;
 }
 
 
@@ -102,9 +90,6 @@ html, body {
 .toppingsP {
   color: green;
 }
-/* .priceP {
-  color: gold;
-} */
 .floatRight {
   float: right;
   text-align: right;
@@ -120,12 +105,10 @@ html, body {
   padding-right: 10%;
   font-family: 'Gloria Hallelujah', cursive;
 }
-
 h3, h2 {
   background-color: rgba(255, 99, 71, 0.782);
   font-family: 'Gloria Hallelujah', cursive;
 }
-
 .price {
   background-color: white;
   padding: 3%;
@@ -133,17 +116,9 @@ h3, h2 {
   font-weight: bolder;
   font-size: 3rem;
 }
-
 .totPrice {
   color: white;
   font-weight: bolder;
-}
-.displayedTotal {
-  text-align: right;
-  width: 50%;
-  margin-right: 0;
-  margin-left: auto;
-  background-color: tomato;
 }
 .sizePrice b {
   color: tomato;
@@ -153,19 +128,18 @@ h3, h2 {
 .header img {
   height: 100px;
 }
-
 .header h1 {
   background-color: tomato;
   color: white;
   width: 100%;
   margin: auto;
-  /* border-radius: 100px; */
   padding: 2%;
-  /* box-shadow: 3px 3px 10px black; */
+}
+.right h3 {
+  text-align: center;
 }
 
 #selectSize {
-  /* background-color: black; */
   width: 20%;
   min-width: 10px;
   background-color: rgba(112, 112, 112, 0.672);
