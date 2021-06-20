@@ -11,7 +11,8 @@ Pizzas.prototype.addPizzaOrder = function(pizzaOrder) {
   this.pizzaOrder[pizzaOrder.id] = pizzaOrder;
 };
 
-// fixed the deleting all orders breakikng code with line 16-17
+// fixed the deleting all orders breakikng code with line 16-
+//try nesting if pizzaOrder[2] doesn't exist
 Pizzas.prototype.assignId = function() {
   if (this.pizzaOrder[1] === undefined) {
     this.currentId = 0;
@@ -127,7 +128,6 @@ $(document).ready(function() {
         console.log('pizzas object', pizzas);
             // below only works for adding 2 pizzas, but more than 3 it breaks
         for (let i = 1; i <= pizzas.currentId; i++) {
-          pizzas.totalPrice += pizzas.pizzaOrder[i].price;
           console.log('pizzaOrder price', pizzas.pizzaOrder[i].price)
           let displaySize = pizzas.pizzaOrder[i].size;
           let displayToppings = pizzas.pizzaOrder[i].toppings;
@@ -144,14 +144,17 @@ $(document).ready(function() {
           <p><b>Price:</b> ${displayPrice}</p><br>
           </div>`
           $('.orderPreview').append(htmlstr);
-          $('.orderPreview').show();
-          $('.price').html(`$${pizzas.totalPrice.toFixed(2)}`);
-          console.log('totalPrice', pizzas.totalPrice);
+          $('.orderPreview').show();;
           
         }
-
+        //reset price to 0 so doesn't keep looping when you add more pizzas
+        pizzas.totalPrice = 0;
       }
-      
+      for (let i = pizzas.currentId; i >= 1; i--) {
+        pizzas.totalPrice += pizzas.pizzaOrder[i].price;
+      }
+      $('.price').html(`$${pizzas.totalPrice.toFixed(2)}`);
+      console.log('totalPrice', pizzas.totalPrice)
 
     }
 
