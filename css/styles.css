@@ -76,11 +76,26 @@ html, body {
 }
 .submitted {
   display: none;
+  font-size: xx-large;
+}
+.receipt {
+  width: 50%;
+  margin-left: auto;
+  margin-right: 0;
+  /* float: right; */
+  /* margin: auto; */
+}
+.orderDetails {
+  width: 75%;
+  margin-right: 0;
+  margin-left: auto;
 }
 
 
-
 /* text-style */
+.receipt h2 {
+  text-align: right;
+}
 .sizeP {
   color: red;
 }

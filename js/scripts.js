@@ -115,7 +115,7 @@ $(document).ready(function() {
         <p><h6>Order - <button class='delete btn btn-danger' id='${i}'>delete</button></h6></p>
         <p class='sizeP'><b>Size</b>: <span class='floatRight'>${displaySize}</span></p>
         <p class='toppingsP'><b>Toppings</b>: <span class='floatRight'>cheese<br>${toppingsStr}</span></p>
-        <p class='priceP'><b>Price:</b> <span class='floatRight'>$${displayPrice}</span></p><br>
+        <p class='priceP'><b>Price:</b> <span class='floatRight'>$${displayPrice.toFixed(2)}</span></p><br>
         </div>`
 
         $('.orderPreview').append(htmlstr);
@@ -137,13 +137,27 @@ $(document).ready(function() {
 
   $('#pizza').submit(function(e) {
     e.preventDefault();
-    const selectedSize = $('#selectSize').val();
-    if(!selectedSize) {
-      alert('please select size');
-    } else {
-      $('.left, .right, .rightLow').hide();
-      $('.submitted').show();
+    $('.left, .right, .rightLow').hide();
+    for (let i = 1; i <= pizzas.currentId; i++) {
+    if (pizzas.pizzaOrder[i] === undefined) {
+      continue;
     }
+    let displaySize = pizzas.pizzaOrder[i].size;
+    let displayToppings = pizzas.pizzaOrder[i].toppings;
+    let displayPrice = pizzas.pizzaOrder[i].price;
+    let toppingsStr = displayToppings.join('<br>');
+    let htmlstr = `
+    <p><h2>- Pizza (1) -</h2></p>
+    <div class='orderDetails'>
+      <p class='sizeP'><b>Size</b>: <span class='floatRight'>${displaySize}</span></p>
+      <p class='toppingsP'><b>Toppings</b>: <span class='floatRight'>cheese<br>${toppingsStr}</span></p>
+    </div>`;
+    $('.finalPrice').html(`$${pizzas.totalPrice.toFixed(2)}`);
+    $('.receipt').append(htmlstr);
+    $('.orderNumber').text(Math.floor(Math.random() * 10000));
+  }
+  $('.submitted').show();
+    
 
   })
 })
