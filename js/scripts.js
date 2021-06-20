@@ -3,6 +3,7 @@
 function Pizzas () {
   this.pizzaOrder = {};
   this.currentId = 0;
+  this.totalPrice = 0;
 }
 
 Pizzas.prototype.addPizzaOrder = function(pizzaOrder) {
@@ -66,41 +67,79 @@ $(document).ready(function() {
         }
       })
       newPizza = new PizzaOrder(selectedSize, toppings);
-  
-      
-      console.log('toppings', toppings);
-      console.log('newPizza', newPizza);
+      pizzas.addPizzaOrder(newPizza);
       newPizza.addPrice();
-      console.log('newPizza price', newPizza.price)
-      console.log('newPizza toppings', newPizza.toppings)
-      console.log('newPizza size', newPizza.size)
-      $('.price').html(`$${newPizza.price.toFixed(2)}`);
-      toppings = newPizza.toppings;
-      let toppingsStr = toppings.join('<br>');
-      console.log('toppingsStr', toppingsStr);
-      let htmlstr = `
-      <p><b>Size</b>: ${newPizza.size}</p>
-      <p><b>Toppings</b>: <br>${toppingsStr}</p></p>`
-      $('.orderPreview').html(htmlstr);
-      $('.orderPreview').show();
+      if (pizzas.currentId === 1) {
+        console.log('toppings', toppings);
+        console.log('newPizza', newPizza);
+        // newPizza.addPrice();
+        console.log('newPizza price', newPizza.price)
+        console.log('newPizza toppings', newPizza.toppings)
+        console.log('newPizza size', newPizza.size)
+        $('.price').html(`$${newPizza.price.toFixed(2)}`);
+        toppings = newPizza.toppings;
+        let toppingsStr = toppings.join('<br>');
+        console.log('toppingsStr', toppingsStr);
+        let htmlstr = `
+        <p><b>Size</b>: ${newPizza.size}</p>
+        <p><b>Toppings</b>: <br>${toppingsStr}</p>
+        <p><b>Price</b>: <br>${newPizza.price}</p>`
+        $('.orderPreview').html(htmlstr);
+        $('.orderPreview').show();
+      } else {
+        $('.orderPreview').html('');
+        // to refresh values after add to cart 
+        $('#selectSize').val('select');
+        $('input').each(function() {
+          console.log('this', $(this))
+          $(this).prop('checked', false);
+        })
+
+        let pizzasArr = Object.keys(pizzas);
+        console.log('pizzasArr', pizzasArr)
+        console.log('pizzas object', pizzas);
+        for (let i = 1; i <= pizzas.currentId; i++) {
+          pizzas.totalPrice += pizzas.pizzaOrder[i].price;
+          console.log('pizzaOrder price', pizzas.pizzaOrder[i].price)
+          let displaySize = pizzas.pizzaOrder[i].size;
+          let displayToppings = pizzas.pizzaOrder[i].toppings;
+          let displayPrice = pizzas.pizzaOrder[i].price;
+          console.log('displaySize', displaySize);
+          console.log('displayToppings', displayToppings);
+          // toppings = newPizza.toppings;
+          let toppingsStr = displayToppings.join('<br>');
+          // console.log('toppingsStr', toppingsStr);
+          let htmlstr = `
+          <p><b>Size</b>: ${displaySize}</p>
+          <p><b>Toppings</b>: <br>${toppingsStr}</p>
+          <p><b>Price:</b> <br>${displayPrice}</p>`
+          $('.orderPreview').append(htmlstr);
+          $('.orderPreview').show();
+          $('.price').html(`$${pizzas.totalPrice.toFixed(2)}`);
+        }
+        console.log('totalPrice', pizzas.totalPrice);
+      }
+      
+
     }
+    
 
   })
   // may delete this logic below if unable to correctly add pizzas 
   // was able to refresh values with code below
-  $('#addPizza').click(function(e) {
-    e.preventDefault();
-    $('#selectSize').val('select');
-    $('input').each(function() {
-      console.log('this', $(this))
-      $(this).prop('checked', false);
-    })
+  // $('#addPizza').click(function(e) {
+  //   e.preventDefault();
+  //   $('#selectSize').val('select');
+  //   $('input').each(function() {
+  //     console.log('this', $(this))
+  //     $(this).prop('checked', false);
+  //   })
 
-    pizzas.addPizzaOrder(newPizza);
-    let pizzasArr = Object.keys(pizzas);
-    console.log('pizzasArr', pizzasArr)
-    console.log('pizzas object', pizzas);
-  })
+  //   pizzas.addPizzaOrder(newPizza);
+  //   let pizzasArr = Object.keys(pizzas);
+  //   console.log('pizzasArr', pizzasArr)
+  //   console.log('pizzas object', pizzas);
+  // })
   $('#pizza').submit(function(e) {
     e.preventDefault();
     const selectedSize = $('#selectSize').val();
