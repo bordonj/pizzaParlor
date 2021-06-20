@@ -14,8 +14,9 @@ Pizzas.prototype.assignId = function() {
   let pizzaOrderEntries = Object.entries(this.pizzaOrder);
   if (pizzaOrderEntries === undefined) {
     this.currentId = 0;
+  } else {
+    this.currentId++;
   }
-  this.currentId++;
   return this.currentId;
 };
 
@@ -23,10 +24,10 @@ Pizzas.prototype.deleteOrder = function (id) {
   delete this.pizzaOrder[id];
   for (let i = this.currentId; i >= 1; i--) {
     if (i > id) {
-      pizzas.currentId = i;
+      this.currentId = i;
       break;
     } else {
-      pizzas.currentId = id-1;
+      this.currentId = id-1;
     }
   }
   return true;
