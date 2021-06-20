@@ -112,10 +112,10 @@ $(document).ready(function() {
         let displayPrice = pizzas.pizzaOrder[i].price;
         let toppingsStr = displayToppings.join('<br>');
         let htmlstr = `<div class='${i}'>
-        <p>Order ---- <button class='delete' id='${i}'>delete</button></p>
-        <p><b>Size</b>: ${displaySize}</p>
-        <p><b>Toppings</b>: <br>cheese<br>${toppingsStr}</p>
-        <p><b>Price:</b> ${displayPrice}</p><br>
+        <p><h6>Order - <button class='delete btn btn-danger' id='${i}'>delete</button></h6></p>
+        <p class='sizeP'><b>Size</b>: <span class='floatRight'>${displaySize}</span></p>
+        <p class='toppingsP'><b>Toppings</b>: <span class='floatRight'>cheese<br>${toppingsStr}</span></p>
+        <p class='priceP'><b>Price:</b> <span class='floatRight'>$${displayPrice}</span></p><br>
         </div>`
 
         $('.orderPreview').append(htmlstr);

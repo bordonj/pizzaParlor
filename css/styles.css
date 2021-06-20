@@ -69,20 +69,36 @@ html, body {
   width: 100%;
   margin: auto;
 }
-.orderPreview{
+.orderPreview {
   color: black;
   background-color: white;
   padding: 5%;
-  display: none;
 }
 .submitted {
   display: none;
-
 }
 
 
 
 /* text-style */
+.sizeP {
+  color: red;
+}
+.toppingsP {
+  color: green;
+}
+/* .priceP {
+  color: gold;
+} */
+.floatRight {
+  float: right;
+  text-align: right;
+}
+.orderPreview p {
+  text-align: left;
+  margin-bottom: 0;
+  clear: both;
+}
 .h3 {
   font-size: 1.75rem;
   background-color: rgba(255, 99, 71, 0.782);
@@ -140,4 +156,12 @@ input, label {
 }
 #submit {
   float: left;
+}
+#addOrder {
+  border: 0;
+}
+.delete {
+  float: right;
+  width: 40%;
+  min-width: 70px;
 }
