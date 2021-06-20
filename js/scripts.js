@@ -87,8 +87,15 @@ $(document).ready(function() {
 
   })
   // may delete this logic below if unable to correctly add pizzas 
+  // was able to refresh values with code below
   $('#addPizza').click(function(e) {
     e.preventDefault();
+    $('#selectSize').val('select');
+    $('input').each(function() {
+      console.log('this', $(this))
+      $(this).prop('checked', false);
+    })
+
     pizzas.addPizzaOrder(newPizza);
     let pizzasArr = Object.keys(pizzas);
     console.log('pizzasArr', pizzasArr)
