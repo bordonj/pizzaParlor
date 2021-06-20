@@ -143,33 +143,34 @@ $(document).ready(function() {
       alert('Please submit an order first! :)')
     } else {
       $('.left, .right, .rightLow').hide();
-    for (let i = 1; i <= pizzas.currentId; i++) {
-    if (pizzas.pizzaOrder[i] === undefined) {
-      continue;
-    }
-    let displaySize = pizzas.pizzaOrder[i].size;
-    let displayToppings = pizzas.pizzaOrder[i].toppings;
-    let toppingsStr = displayToppings.join('<br>');
-    let htmlstr = `
-    <p><h2>- Pizza (1) -</h2></p>
-    <div class='orderDetails'>
-      <div class='row'>
-        <div class='col-6'>
-          <p>Size</p>
-          <p>Toppings</p>
+      for (let i = 1; i <= pizzas.currentId; i++) {
+      if (pizzas.pizzaOrder[i] === undefined) {
+        continue;
+      }
+      let displaySize = pizzas.pizzaOrder[i].size;
+      let displayToppings = pizzas.pizzaOrder[i].toppings;
+      let toppingsStr = displayToppings.join('<br>');
+      let htmlstr = `
+      <p><h2>- Pizza (1) -</h2></p>
+      <div class='orderDetails'>
+        <div class='row'>
+          <div class='col-6'>
+            <p>Size</p>
+            <p>Toppings</p>
+          </div>
+          <div class='col-6'>
+            <p>${displaySize}</p>
+            <p>cheese<br>${toppingsStr}</p>
+          </div>
         </div>
-        <div class='col-6'>
-          <p>${displaySize}</p>
-          <p>cheese<br>${toppingsStr}</p>
-        </div>
-      </div>
 
-    </div>`;
-    $('.finalPrice').html(`$${pizzas.totalPrice.toFixed(2)}`);
-    $('.receipt').append(htmlstr);
-    $('.orderNumber').text(Math.floor(Math.random() * 10000));
+      </div>`;
+      $('.finalPrice').html(`$${pizzas.totalPrice.toFixed(2)}`);
+      $('.receipt').append(htmlstr);
+      $('.orderNumber').text(Math.floor(Math.random() * 10000));
+      }
+      $('.submitted').show();
     }
-  }
-  $('.submitted').show();
+  
   })
 })
