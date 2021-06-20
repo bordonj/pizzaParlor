@@ -90,8 +90,6 @@ Expected Output: pizzas1 = {
   totalPrice: 0
 }
 
-
-
 Describe: PizzaOrder(size, toppings)
 Test: "It should return an object that contains a key for topping, and a key for size"
 Code: let newPizza = new PizzaOrder('large', ['cheese']);

@@ -83,7 +83,7 @@ $(document).ready(function() {
     let toppings = [];
     const selectedSize = $('#selectSize').val();
     if(!selectedSize) {
-      alert('please select size');
+      alert('Please select a size first! :)');
     } else {
       $('input').each(function() {
         if ($(this).is(':checked')) {
@@ -137,14 +137,18 @@ $(document).ready(function() {
 
   $('#pizza').submit(function(e) {
     e.preventDefault();
-    $('.left, .right, .rightLow').hide();
+    let pizzaOrderEntries = Object.entries(pizzas.pizzaOrder);
+    console.log('pizza entries', pizzaOrderEntries);
+    if (pizzaOrderEntries.length < 1) {
+      alert('Please submit an order first! :)')
+    } else {
+      $('.left, .right, .rightLow').hide();
     for (let i = 1; i <= pizzas.currentId; i++) {
     if (pizzas.pizzaOrder[i] === undefined) {
       continue;
     }
     let displaySize = pizzas.pizzaOrder[i].size;
     let displayToppings = pizzas.pizzaOrder[i].toppings;
-    let displayPrice = pizzas.pizzaOrder[i].price;
     let toppingsStr = displayToppings.join('<br>');
     let htmlstr = `
     <p><h2>- Pizza (1) -</h2></p>
@@ -164,6 +168,7 @@ $(document).ready(function() {
     $('.finalPrice').html(`$${pizzas.totalPrice.toFixed(2)}`);
     $('.receipt').append(htmlstr);
     $('.orderNumber').text(Math.floor(Math.random() * 10000));
+    }
   }
   $('.submitted').show();
   })
