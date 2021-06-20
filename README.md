@@ -38,12 +38,59 @@ Test | Code|  Output |
 | It will create an object for the PizzaOrder| NaN | returns 'invalid' -->
 ```
 Describe: Pizzas()
-Test: "It should return an object that contains a key for pizzaOrder and a key for currentId set to 0"
+Test: "It should return an object that contains a key for an empty pizzaOrder object, and a key for currentId and totalPrice set to 0"
 Code: let pizzas1 = new Pizzas();
 Expected Output: pizzas1 = {
   pizzaOrder: {},
-  currentId: 0
+  currentId: 0,
+  totalPrice: 0
 }
+
+Describe: Pizzas.prototype.assignId()
+Test: "It should declare an 'entries' variable holding the entries of Pizza.pizzaOrder. If the 'entries' variable is undefined, sets Pizza.currentId to 0. Otherwise, increments Pizza.currentId."
+Code: pizzas1.assignId()
+Expected Output: pizzas1 = {
+  pizzaOrder: {},
+  currentId: 1,
+  totalPrice: 0
+}
+
+Describe: Pizzas.prototype.addPizzaOrder(pizzaOrder)
+Test: "It should increment Pizzas.id and add the pizzaOrder to the Pizzas object under the Pizzas.pizzaOrder key (setting the pizzaOrder's own key to have a value of the incremented id)"
+Code: pizzas1.addPizzaOrder(newPizza)
+Expected Output: pizzas1 = {
+  pizzaOrder: {
+    1: newPizza {}
+  },
+  currentId: 1,
+  totalPrice: 0
+}
+
+Describe: Pizzas.prototype.deleteOrder(id)
+Test: "It should delete Pizzas.pizzaOrder[id]. Then if Pizza.currentId has a higher id value than the (id), sets Pizzas.currentId to the higher id value. "
+Code: pizzas1.deleteOrder(2) //if pizza1 has 3 pizzaOrders// 
+Expected Output: pizzas1 = {
+  pizzaOrder: {
+    1: newPizza {},
+    3: newPizza {}
+  },
+  currentId: 3,
+  totalPrice: 0
+}
+
+Describe: Pizzas.prototype.deleteOrder(id)
+Test: "It should delete Pizzas.pizzaOrder[id]. Then if Pizza.currentId is not a higher value than (id),sets Pizza.currentId to the (id) value minus 1"
+Code: pizzas1.deleteOrder(3) //if pizza1 has 3 pizzaOrders// 
+Expected Output: pizzas1 = {
+  pizzaOrder: {
+    1: newPizza {},
+    2: newPizza {}
+  },
+  currentId: 2,
+  totalPrice: 0
+}
+
+
 
 Describe: PizzaOrder(size, toppings)
 Test: "It should return an object that contains a key for topping, and a key for size"
