@@ -140,7 +140,7 @@ $(document).ready(function() {
     let pizzaOrderEntries = Object.entries(pizzas.pizzaOrder);
     console.log('pizza entries', pizzaOrderEntries);
     if (pizzaOrderEntries.length < 1) {
-      alert('Please submit an order first! :)')
+      alert('Please add an order to cart first! :)')
     } else {
       $('.left, .right, .rightLow').hide();
       for (let i = 1; i <= pizzas.currentId; i++) {
