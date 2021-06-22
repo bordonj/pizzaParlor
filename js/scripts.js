@@ -138,7 +138,6 @@ $(document).ready(function() {
   $('#pizza').submit(function(e) {
     e.preventDefault();
     let pizzaOrderEntries = Object.entries(pizzas.pizzaOrder);
-    console.log('pizza entries', pizzaOrderEntries);
     if (pizzaOrderEntries.length < 1) {
       alert('Please add an order to cart first! :)')
     } else {
