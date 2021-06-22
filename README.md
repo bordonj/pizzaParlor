@@ -32,11 +32,6 @@ git clone https://github.com/bordonj/pizzaParlor.git
 
 ## Specifications:
 
-### Describe: PizzaOrder()
-<!-- Test | Code|  Output |
-| -- | -- | -- |
-| It will create an object for the PizzaOrder| NaN | returns 'invalid' |
-|a |a |a | -->
 ```
 Describe: Pizzas()
 Test: "It should return an object that contains a key for an empty pizzaOrder object, and a key for currentId and totalPrice set to 0"
