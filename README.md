@@ -15,7 +15,7 @@
 
 ## Description
 
-This is a web application where a user can choose one or more individual toppings (cheese, pizza, artichoke, anchovy, etc.) and a size to order a pizza and see the final cost.
+This is a web application where a user can order a pizza, or multiples pizzas. They first have to select a size, and if wanted, can order a topping (or multiple toppings). A preview of their order is displayed on the lower right corner, and the total price of their order is displayed above the preview. After adding any orders to cart, the user may delete unwanted orders. To proceed with the order submission, the user will need to have added order to their cart first.. If the user is satisfied with their order, they can then 'submit' their order to view a 'receipt' showing their total order and final price.
 
 ## Setup/Installation Requirements
 
@@ -27,7 +27,7 @@ git clone https://github.com/bordonj/pizzaParlor.git
 * Click the folder "pizzaParlor" on your Desktop
 * To open the HTML file, and view the website, click on the file 'index.html'
 * This should open up the website in a browser
-* Enter name a pizza order to see the price!
+* Enter a pizza order(s) to see the price!
 
 
 ## Specifications:
