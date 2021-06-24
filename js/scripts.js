@@ -3,7 +3,6 @@ function Pizzas () {
   this.pizzaOrder = {};
   this.currentId = 0;
   this.totalPrice = 0;
-  this.pizza;
 }
 
 Pizzas.prototype.addPizzaOrder = function(pizzaOrder) {
