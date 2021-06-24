@@ -3,6 +3,7 @@ function Pizzas () {
   this.pizzaOrder = {};
   this.currentId = 0;
   this.totalPrice = 0;
+  this.pizza;
 }
 
 Pizzas.prototype.addPizzaOrder = function(pizzaOrder) {
@@ -62,20 +63,20 @@ PizzaOrder.prototype.addPrice = function() {
 
 
 // UI logic ----------
-function attachDeleteListeners() {
-  $(".orderPreview").on("click", ".delete", function() { 
-    $(this).remove();
-    $(`.${this.id}`).remove();
-    pizzas.totalPrice -= pizzas.pizzaOrder[this.id].price;
-    pizzas.deleteOrder(parseInt(this.id));
-    $('.price').html(`$${pizzas.totalPrice.toFixed(2)}`);
-  });
-}
-
 $(document).ready(function() {
   let pizzas = new Pizzas();
-  let newPizza;
+  function attachDeleteListeners() {
+    $(".orderPreview").on("click", ".delete", function() { 
+      $(this).remove();
+      $(`.${this.id}`).remove();
+      pizzas.totalPrice -= pizzas.pizzaOrder[this.id].price;
+      pizzas.deleteOrder(parseInt(this.id));
+      console.log('pizzas', pizzas);
+      $('.price').html(`$${pizzas.totalPrice.toFixed(2)}`);
+    });
+  }
   attachDeleteListeners()
+  
   $('#addOrder').on('click', function(e) {
     // seems like the prevenDefault() is needed, or page refreshes even though this isn't a type=submit
     e.preventDefault();
@@ -90,11 +91,11 @@ $(document).ready(function() {
         }
       })
       // initiates new pizzaOrder
-      newPizza = new PizzaOrder(selectedSize, toppings);
+      pizzas.pizza = new PizzaOrder(selectedSize, toppings);
       // adds order to pizzas object
-      pizzas.addPizzaOrder(newPizza);
+      pizzas.addPizzaOrder(pizzas.pizza);
       // add price to pizzaOrder
-      newPizza.addPrice();
+      pizzas.pizza.addPrice();
       $('.orderPreview').html('');
       // lines 101 to 104 below refresh values after added to cart 
       $('#selectSize').val('select');
