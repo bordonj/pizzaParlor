@@ -62,9 +62,6 @@ PizzaOrder.prototype.addPrice = function() {
 
 
 // UI logic ----------
-let pizzas = new Pizzas();
-let newPizza;
-
 function attachDeleteListeners() {
   $(".orderPreview").on("click", ".delete", function() { 
     $(this).remove();
@@ -76,6 +73,8 @@ function attachDeleteListeners() {
 }
 
 $(document).ready(function() {
+  let pizzas = new Pizzas();
+  let newPizza;
   attachDeleteListeners()
   $('#addOrder').on('click', function(e) {
     // seems like the prevenDefault() is needed, or page refreshes even though this isn't a type=submit
@@ -96,7 +95,6 @@ $(document).ready(function() {
       pizzas.addPizzaOrder(newPizza);
       // add price to pizzaOrder
       newPizza.addPrice();
-
       $('.orderPreview').html('');
       // lines 101 to 104 below refresh values after added to cart 
       $('#selectSize').val('select');
